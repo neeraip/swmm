@@ -1,0 +1,66 @@
+# Git
+.git
+.gitignore
+.gitattributes
+.gitmodules
+.github
+
+# Environment
+.env
+*.env
+.env.local
+.env.*.local
+
+# Data
+data/
+
+# Build artifacts
+build/
+external/SWMM/build/
+external/EPANET/build/
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.editorconfig
+
+# OS
+.DS_Store
+Thumbs.db
+.AppleDouble
+
+# Python
+__pycache__
+.venv
+*.pyc
+*.egg-info
+.cache/
+
+# Documentation
+doc/
+docs/
+README.md
+build/README.md
+docker/README.md
+
+# Test files
+tests/
+.pytest_cache
+
+# Temporary files
+tmp/
+temp/
+*.log
+*.bak
+*.orig
+
+# Development files
+Makefile
