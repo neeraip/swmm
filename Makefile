@@ -20,12 +20,12 @@ help:
 	@echo "$(GREEN)SWMM (Stormwater Management Model):$(NC)"
 	@echo "  make swmm-build     - Build all SWMM versions locally"
 	@echo "  make swmm-push      - Build and push SWMM to Docker Hub (multi-arch)"
-	@echo "  make swmm-test      - Test all built SWMM versions"
+	@echo "  make swmm-test      - Test all built SWMM versions (requires build first)"
 	@echo ""
 	@echo "$(GREEN)EPANET (Water Network Analysis):$(NC)"
 	@echo "  make epanet-build   - Build all EPANET versions locally"
 	@echo "  make epanet-push    - Build and push EPANET to Docker Hub (multi-arch)"
-	@echo "  make epanet-test    - Test all built EPANET versions"
+	@echo "  make epanet-test    - Test all built EPANET versions (requires build first)"
 	@echo ""
 
 # ============================================================================

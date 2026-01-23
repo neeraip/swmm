@@ -116,6 +116,8 @@ cd engine/EPANET/scripts
 
 Output files are created with version suffixes (e.g., `example-5.2.4.rpt`).
 
+**Note:** Test scripts validate that all Docker images exist locally before running tests. If images are missing, they'll display an error message and instruct you to run the build script first.
+
 ## Pushing to Docker Hub
 
 ### Push all SWMM versions (multi-arch: amd64, arm64)
