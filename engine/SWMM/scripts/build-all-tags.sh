@@ -7,14 +7,15 @@ set -uo pipefail
 # Source tags configuration
 source "$(dirname "$0")/_config.sh"
 
-PROJECT_ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+SWMM_DIR="$(dirname "$SCRIPT_DIR")"
 
 # Track failed builds
 failed_builds=()
 failed_errors=()
 
 echo "Building SWMM Docker images for multiple versions..."
-echo "Project root: $PROJECT_ROOT"
+echo "SWMM directory: $SWMM_DIR"
 echo ""
 
 for version in "${VERSIONS[@]}"; do
@@ -24,11 +25,11 @@ for version in "${VERSIONS[@]}"; do
     
     echo -n "Building $image_name... "
     error_output=$(docker build \
-        -f "$PROJECT_ROOT/engine/SWMM/Dockerfile" \
+        -f "$SWMM_DIR/Dockerfile" \
         --build-arg TAG="$github_tag" \
         -t "$image_name" \
         --load \
-        "$PROJECT_ROOT" 2>&1)
+        "$SWMM_DIR" 2>&1)
     
     if [ $? -eq 0 ]; then
         echo "✓"

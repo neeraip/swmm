@@ -41,10 +41,11 @@ COPY --from=builder /src/SWMM/build/src/outfile/. /app/bin/
 
 # Make binary executable and register libraries
 RUN chmod +x /app/bin/runswmm && \
-    ldconfig /app/bin 2>/dev/null || true
+    echo "/app/bin" > /etc/ld.so.conf.d/swmm.conf && \
+    ldconfig
 
 # Copy entrypoint script
-COPY engine/SWMM/entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # Create non-root user

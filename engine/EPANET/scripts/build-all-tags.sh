@@ -24,7 +24,7 @@ for version in "${VERSIONS[@]}"; do
         -t "${IMAGE_NAME}:${version}" \
         -f "$(dirname "$SCRIPT_DIR")/Dockerfile" \
         --load \
-        "$(dirname "$SCRIPT_DIR")/../.." \
+        "$(dirname "$SCRIPT_DIR")" \
         > /dev/null 2>&1; then
         echo "✓"
     else
@@ -35,7 +35,7 @@ for version in "${VERSIONS[@]}"; do
             -t "${IMAGE_NAME}:${version}" \
             -f "$(dirname "$SCRIPT_DIR")/Dockerfile" \
             --load \
-            "$(dirname "$SCRIPT_DIR")/../.." 2>&1 || true)
+            "$(dirname "$SCRIPT_DIR")" 2>&1 || true)
         error_context=$(echo "$error_output" | tail -15)
         failed_errors+=("$error_context")
     fi
