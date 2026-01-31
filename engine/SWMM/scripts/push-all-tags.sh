@@ -27,7 +27,7 @@ for version in "${VERSIONS[@]}"; do
         --provenance=true \
         --push \
         -f "$(dirname "$SCRIPT_DIR")/Dockerfile" \
-        "$(dirname "$SCRIPT_DIR")/../.." \
+        "$(dirname "$SCRIPT_DIR")" \
         > /dev/null 2>&1; then
         echo "✓"
     else
@@ -41,7 +41,7 @@ for version in "${VERSIONS[@]}"; do
             --provenance=true \
             --push \
             -f "$(dirname "$SCRIPT_DIR")/Dockerfile" \
-            "$(dirname "$SCRIPT_DIR")/../.." 2>&1 || true)
+            "$(dirname "$SCRIPT_DIR")" 2>&1 || true)
         error_context=$(echo "$error_output" | tail -15)
         failed_errors+=("$error_context")
     fi
@@ -60,7 +60,7 @@ if [ ${#VERSIONS[@]} -gt 0 ]; then
         --provenance=true \
         --push \
         -f "$(dirname "$SCRIPT_DIR")/Dockerfile" \
-        "$(dirname "$SCRIPT_DIR")/../.." \
+        "$(dirname "$SCRIPT_DIR")" \
         > /dev/null 2>&1; then
         echo "✓"
     else
@@ -74,7 +74,7 @@ if [ ${#VERSIONS[@]} -gt 0 ]; then
             --provenance=true \
             --push \
             -f "$(dirname "$SCRIPT_DIR")/Dockerfile" \
-            "$(dirname "$SCRIPT_DIR")/../.." 2>&1 || true)
+            "$(dirname "$SCRIPT_DIR")" 2>&1 || true)
         error_context=$(echo "$error_output" | tail -15)
         failed_errors+=("$error_context")
     fi
