@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  hec-ras:
+    container_name: hec-ras
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        HEC_RAS_VERSION: "6.6"
+      platforms:
+        - linux/amd64
+    image: hec-ras:6.6
+    platform: linux/amd64
+    volumes:
+      - ./example:/data
