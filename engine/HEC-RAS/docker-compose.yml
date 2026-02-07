@@ -12,5 +12,6 @@ services:
         - linux/amd64
     image: hec-ras:6.6
     platform: linux/amd64
+    entrypoint: ["tail", "-f", "/dev/null"]
     volumes:
       - ./example:/data

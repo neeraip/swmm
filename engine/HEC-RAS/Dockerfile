@@ -33,19 +33,20 @@ RUN mkdir -p /tmp/runtime-root \
 
 ENV PATH="/opt/venv/bin:$PATH"
 
-# Initialize Wine prefix and install components at runtime (not build-time)
+# Initialize Wine prefix
+RUN xvfb-run -a wineboot --init
+
+# Install Wine components (split for better caching and error visibility)
+RUN xvfb-run -a winetricks -q corefonts
+
+RUN xvfb-run -a winetricks -q gdiplus
+
+RUN xvfb-run -a winetricks -q dotnet48
 
 # Copy the preinstalled HEC-RAS binaries from the repo into the Wine drive.
 COPY ./bin/${HEC_RAS_VERSION}/ /root/.wine/drive_c/HEC-RAS/${HEC_RAS_VERSION}/
 
-# Set working directory and copy run script
-WORKDIR /app
-COPY run.py /app/run.py
-
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
-
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+ENTRYPOINT ["python3"]
 
 
 
